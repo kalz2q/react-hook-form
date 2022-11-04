@@ -6,9 +6,7 @@ import { useRef, useEffect } from "react";
 function App() {
   const inputRef = useRef<HTMLInputElement>(null);
   useEffect(() => {
-    if (inputRef.current !== null) {
-      console.log(inputRef.current.focus());
-    }
+    if (inputRef.current !== null) { inputRef.current.focus(); }
 
   }, []);
 

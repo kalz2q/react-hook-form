@@ -1,0 +1,39 @@
+import React from 'react';
+import './App.css';
+// stopwatch
+import { useRef, useState, useEffect } from "react";
+
+function App() {
+  const timerIdRef = useRef(0);
+  const [count, setCount] = useState(0);
+
+  const startHandler = () => {
+    if (timerIdRef.current) {
+      return;
+    }
+    // timerIdRef.current = setInterval(() => setCount((c) => 'c + 1)), 1000);
+    setInterval(() => setCount((prevCount) => prevCount + 1));
+    timerIdRef.current = count;
+  };
+
+  const stopHandler = () => {
+    clearInterval(timerIdRef.current);
+    timerIdRef.current = 0;
+  };
+
+  useEffect(() => {
+    return () => clearInterval(timerIdRef.current);
+  }, []);
+
+  return (
+    <div>
+      <div className="timer">Timerr: {count}s</div>
+      <div>
+        <button onClick={startHandler}>Start</button>
+        <button onClick={stopHandler}>Stop</button>
+      </div>
+    </div>
+  );
+}
+
+export default App;
