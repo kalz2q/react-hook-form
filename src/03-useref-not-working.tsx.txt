@@ -1,0 +1,39 @@
+import React from 'react';
+import './App.css';
+import { useRef } from 'react';
+
+function App() {
+  const emailRef = useRef(null);
+  const passwordRef = useRef(null);
+
+  const handleSubmit = (e: any) => {
+    e.preventDefault();
+    if ((emailRef.current !== null) && (passwordRef.current !== null))
+      console.log({
+        emai: emailRef.current,
+        password: passwordRef.current,
+      });
+  };
+
+  return (
+    <div className="App">
+      <h1>ログイン</h1>
+      <form onSubmit={handleSubmit}>
+        <div>
+          <label htmlFor="email">Email</label>
+          <input id="email" name="email" ref={emailRef} />
+        </div>
+        <div>
+          <label htmlFor="password">パスワード</label>
+          <input id="password" name="password" ref={passwordRef} />
+        </div>
+
+        <div>
+          <button type="submit">ログイン</button>
+        </div>
+      </form>
+    </div>
+  );
+}
+
+export default App;

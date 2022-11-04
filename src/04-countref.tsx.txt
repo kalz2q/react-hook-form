@@ -8,9 +8,7 @@ function App() {
   const handle = () => {
     countRef.current++;
     console.log(`Clicked ${countRef.current} times`);
-
   };
-  console.log("I rendered!");
   return (
     <div className="App">
       <h1>console log click times</h1>
